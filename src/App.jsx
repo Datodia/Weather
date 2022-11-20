@@ -7,7 +7,6 @@ function App() {
   const [location, setLocation] = useState('')
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`
 
-
   useEffect(() => {
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${'Tbilisi'}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`)
       .then((res) => {
@@ -23,7 +22,6 @@ function App() {
       })
       setLocation('')
     }
-
   }
 
   return (
