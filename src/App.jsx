@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import axios from 'axios'
+import { useEffect } from "react";
 
 function App() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState('')
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`
+
+
+  useEffect(() => {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${'Tbilisi'}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`)
+      .then((res) => {
+        setData(res.data)
+      })
+  }, [])
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
@@ -48,7 +57,7 @@ function App() {
             </div>
             <div className="humidity">
               {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
-              <p className="bold">Humidity</p>
+              <p>Humidity</p>
             </div>
             <div className="wind">
               {data.wind ? <p className="bold">{data.wind.speed} KM/H</p> : null}
